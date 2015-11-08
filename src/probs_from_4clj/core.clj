@@ -29,6 +29,18 @@
   (take n (fib 1 1)))
   )
 
+
+;; problem 29 (Easy)
+(defn get-the-caps-solution
+  [arg] ;; update args as needed
+  ;; Write a function which takes a string and returns a new string containing only the capital letters.
+  (apply str
+         (filter
+           #(re-matches
+             #"[A-Z]"
+             (str %))
+           arg)))
+
 ;; problem 30 (Easy)
 (defn compress-a-sequence-solution
   [arg] ;; update args as needed
@@ -47,5 +59,7 @@
   [argcol argnth] ;; update args as needed
   ;; Write a function which drops every Nth item from a sequence.
   (keep-indexed #(if (not= 0 (mod (+ %1 1) argnth)) %2) argcol))
+
+
 
 

@@ -44,3 +44,10 @@
   (is (= (drop-every-nth-item-solution [1 2 3 4 5 6] 4) [1 2 3 5 6])))
 
 
+
+
+;; problem 29
+(deftest can-get-the-caps
+  (is (= (get-the-caps-solution "HeLlO, WoRlD!") "HLOWRD"))
+  (is (empty? (get-the-caps-solution "nothing")))
+  (is (= (get-the-caps-solution "$#A(*&987Zf") "AZ")))
