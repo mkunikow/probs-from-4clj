@@ -63,3 +63,34 @@
 
 
 
+
+
+;; problem 42 (Easy)
+(defn factorial-fun-solution
+  [argn] ;; update args as needed
+  ;; Write a function which calculates factorials.
+
+  (letfn [( facseq [n fact]
+            (cons fact
+                  (lazy-seq
+                    (facseq
+                      (inc n)
+                      (* (inc n) fact)))) )]
+
+    (last (take argn (facseq 1 1))))
+  )
+
+(defn factorial-fun-solution-rec
+  [n] ;; update args as needed
+  ;; Write a function which calculates factorials.
+  (loop [iter 1 acc 1]
+         (if (= iter n)
+           acc
+         (recur
+           (inc iter )
+           (* (inc iter) acc))))
+
+  )
+
+
+(factorial-fun-solution-rec 5)

@@ -51,3 +51,11 @@
   (is (= (get-the-caps-solution "HeLlO, WoRlD!") "HLOWRD"))
   (is (empty? (get-the-caps-solution "nothing")))
   (is (= (get-the-caps-solution "$#A(*&987Zf") "AZ")))
+
+
+;; problem 42
+(deftest can-factorial-fun
+  (is (= (factorial-fun-solution 1) 1))
+  (is (= (factorial-fun-solution 3) 6))
+  (is (= (factorial-fun-solution 5) 120))
+  (is (= (factorial-fun-solution 8) 40320)))
