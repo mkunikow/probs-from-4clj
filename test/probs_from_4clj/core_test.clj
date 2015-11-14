@@ -59,3 +59,20 @@
   (is (= (factorial-fun-solution 3) 6))
   (is (= (factorial-fun-solution 5) 120))
   (is (= (factorial-fun-solution 8) 40320)))
+
+;; problem 83
+(deftest can-a-half-truth
+  (is (= false (a-half-truth-solution false false)))
+  (is (= true (a-half-truth-solution true false)))
+  (is (= false (a-half-truth-solution true)))
+  (is (= true (a-half-truth-solution false true false)))
+  (is (= false (a-half-truth-solution true true true)))
+  (is (= true (a-half-truth-solution true true true false))))
+
+
+;; problem 66
+(deftest can-greatest-common-divisor
+  (is (= (greatest-common-divisor-solution 2 4) 2))
+  (is (= (greatest-common-divisor-solution 10 5) 5))
+  (is (= (greatest-common-divisor-solution 5 7) 1))
+  (is (= (greatest-common-divisor-solution 1023 858) 33)))

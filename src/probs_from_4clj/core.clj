@@ -94,3 +94,27 @@
 
 
 (factorial-fun-solution-rec 5)
+
+;; problem 66 (Easy)
+(defn greatest-common-divisor-solution
+  [ain bin] ;; update args as needed
+  ;; Given two integers, write a function which
+  ;; returns the greatest common divisor.
+
+  (loop [a ain b bin]
+    (if (= b 0)
+      a
+      (recur
+        b
+        (mod a b))))
+  )
+
+
+;; problem 83 (Easy)
+(defn a-half-truth-solution
+  [& args] ;; update args as needed
+  ;; Write a function which takes a variable number of booleans. Your function should return true if some of the parameters are true, but not all of the parameters are true. Otherwise your function should return false.
+  (let [bcount (count (filter identity args)) totlacount (count args)]
+    (and (> bcount 0) (not= bcount totlacount))))
+
+
