@@ -76,3 +76,11 @@
   (is (= (greatest-common-divisor-solution 10 5) 5))
   (is (= (greatest-common-divisor-solution 5 7) 1))
   (is (= (greatest-common-divisor-solution 1023 858) 33)))
+
+
+;; problem 107
+(deftest can-simple-closures
+  (is (= 256 ((simple-closures-solution 2) 16),
+       ((simple-closures-solution 8) 2)))
+  (is (= [1 8 27 64] (map (simple-closures-solution 3) [1 2 3 4])))
+  (is (= [1 2 4 8 16] (map #((simple-closures-solution %) 2) [0 1 2 3 4]))))
