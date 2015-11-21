@@ -118,6 +118,16 @@
     (and (> bcount 0) (not= bcount totlacount))))
 
 
+;; problem 90 (Easy)
+(defn cartesian-product-solution
+  [a b] ;; update args as needed
+  ;; Write a function which calculates the Cartesian product of two sets.
+  (letfn [
+          (carhelper [el] (
+                            map #(vector el %) b
+                            ))]
+    (set (mapcat carhelper a))))
+
 
 
 ;; problem 107 (Easy)
@@ -127,3 +137,5 @@
   ;;  It can be hard to follow in the abstract, so let's build a simple closure. Given a positive integer n, return a function (f x) which computes xn. Observe that the effect of this is to preserve the value of n for use outside the scope in which it is defined.
 
   (fn [x] (reduce * (repeat n x))))
+
+
