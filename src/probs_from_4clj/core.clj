@@ -119,7 +119,7 @@
 
 
 ;; problem 90 (Easy)
-(defn cartesian-product-solution
+(defn cartesian-product-solution2
   [a b] ;; update args as needed
   ;; Write a function which calculates the Cartesian product of two sets.
   (letfn [
@@ -129,6 +129,14 @@
     (set (mapcat carhelper a))))
 
 
+(defn cartesian-product-solution
+  [a b] ;; update args as needed
+  ;; Write a function which calculates the Cartesian product of two sets.
+  (set (for [ai a bi b ]
+    [ai bi]))
+  )
+
+(cartesian-product-solution #{1 2} #{3 4 5})
 
 ;; problem 107 (Easy)
 (defn simple-closures-solution
