@@ -118,6 +118,17 @@
     (and (> bcount 0) (not= bcount totlacount))))
 
 
+;; problem 88 (Easy)
+(defn symmetric-difference-solution
+  [s1 s2] ;; update args as needed
+  ;; Write a function which returns the symmetric difference of two sets. The symmetric difference is the set of items belonging to one but not both of the two sets.
+  (clojure.set/select
+    #(not ((clojure.set/intersection s1 s2) %))
+    (clojure.set/union s1 s2)))
+
+(symmetric-difference-solution #{1 2 3} #{1 4})
+
+
 ;; problem 90 (Easy)
 (defn cartesian-product-solution2
   [a b] ;; update args as needed
@@ -145,5 +156,7 @@
   ;;  It can be hard to follow in the abstract, so let's build a simple closure. Given a positive integer n, return a function (f x) which computes xn. Observe that the effect of this is to preserve the value of n for use outside the scope in which it is defined.
 
   (fn [x] (reduce * (repeat n x))))
+
+
 
 

@@ -73,6 +73,14 @@
   (is (= true (a-half-truth-solution true true true false))))
 
 
+;; problem 88
+(deftest can-symmetric-difference
+  (is (= (symmetric-difference-solution #{1 2 3 4 5 6} #{1 3 5 7}) #{2 4 6 7}))
+  (is (= (symmetric-difference-solution #{:a :b :c} #{}) #{:a :b :c}))
+  (is (= (symmetric-difference-solution #{} #{4 5 6}) #{4 5 6}))
+  (is (= (symmetric-difference-solution #{[1 2] [2 3]} #{[2 3] [3 4]}) #{[1 2] [3 4]})))
+
+
 ;; problem 90
 (deftest can-cartesian-product
   (is (= (cartesian-product-solution #{"ace" "king" "queen"} #{"&#9824;" "&#9829;" "&#9830;" "&#9827;"})
@@ -90,5 +98,7 @@
        ((simple-closures-solution 8) 2)))
   (is (= [1 8 27 64] (map (simple-closures-solution 3) [1 2 3 4])))
   (is (= [1 2 4 8 16] (map #((simple-closures-solution %) 2) [0 1 2 3 4]))))
+
+
 
 
