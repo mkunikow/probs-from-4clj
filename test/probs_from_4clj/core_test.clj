@@ -102,3 +102,12 @@
 
 
 
+
+
+;; problem 100
+(deftest can-least-common-multiple
+  (is (== (least-common-multiple-solution 2 3) 6))
+  (is (== (least-common-multiple-solution 5 3 7) 105))
+  (is (== (least-common-multiple-solution 1/3 2/5) 2))
+  (is (== (least-common-multiple-solution 3/4 1/6) 3/2))
+  (is (== (least-common-multiple-solution 7 5/7 2 3/5) 210)))

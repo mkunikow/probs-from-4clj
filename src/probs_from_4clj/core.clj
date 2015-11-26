@@ -160,3 +160,23 @@
 
 
 
+
+
+;; problem 100 (Easy)
+(defn least-common-multiple-solution
+  [& args] ;; update args as needed
+  ;; Write a function which calculates the least common multiple. Your function should accept a variable number of positive integers or ratios.
+  (letfn [(gdc
+              [ain bin]
+              (loop [a ain b bin]
+                (if (= b 0)
+                  a
+                  (recur
+                    b
+                    (mod a b)))))
+          (lcm
+            [a b]
+            (/ (* a b ) (gdc a b)))]
+    (reduce lcm args)))
+
+(least-common-multiple-solution 7 5/7 2 3/5)
