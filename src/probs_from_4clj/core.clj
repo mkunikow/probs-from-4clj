@@ -149,13 +149,62 @@
 
 (cartesian-product-solution #{1 2} #{3 4 5})
 
-;; problem 107 (Easy)
-(defn simple-closures-solution
-  [n] ;; update args as needed
-  ;; Lexical scope and first-class functions are two of the most basic building blocks of a functional language like Clojure. When you combine the two together, you get something very powerful called lexical closures. With these, you can exercise a great deal of control over the lifetime of your local bindings, saving their values for use later, long after the code you're running now has finished.
-  ;;  It can be hard to follow in the abstract, so let's build a simple closure. Given a positive integer n, return a function (f x) which computes xn. Observe that the effect of this is to preserve the value of n for use outside the scope in which it is defined.
 
-  (fn [x] (reduce * (repeat n x))))
+
+;; problem 97 (Easy)
+(defn pascal-s-triangle-solution
+  [row] ;; update args as needed
+  ;; Pascal's triangle is a triangle of numbers computed using the following rules:
+  ;;  - The first row is 1. - Each successive row is computed by adding together adjacent numbers in the row above, and adding a 1 to the beginning and end of the row.
+  ;;
+  ;; Write a function which returns the nth row of Pascal's Triangle.
+  ;;
+  (letfn [(pascal-triangle-row-zip [rowvec] (map vector rowvec (rest rowvec)))
+          (pascal-triiangle-reduce-nest-col [col] (map #(reduce + %) col))
+          (pascal-triangle-next-row [row]
+            (-> row
+                (pascal-triangle-row-zip)
+                (pascal-triiangle-reduce-nest-col)
+                (conj 1)
+                (vec)
+                (conj 1)))
+          (pascal-triangle [row]
+            (loop [row-no row acc [1]]
+              (if (= row-no 1)
+                acc
+                (recur
+                  (dec row-no)
+                  (pascal-triangle-next-row acc)))))]
+    (pascal-triangle row)))
+
+
+(pascal-s-triangle-solution 5)
+
+(defn pascal-triangle-row-zip [rowvec] (map vector rowvec (rest rowvec)))
+(pascal-triangle-row-zip [1 3 3 1])
+
+(defn pascal-triiangle-reduce-nest-col [col] (map #(reduce + %) col))
+(pascal-triiangle-reduce-nest-col '([1 3] [3 3] [3 1]))
+
+(defn pascal-triangle-next-row [row]
+  (-> row
+      (pascal-triangle-row-zip)
+      (pascal-triiangle-reduce-nest-col)
+      (conj 1)
+      (vec)
+      (conj 1)))
+
+(pascal-triangle-next-row [1 3 3 1])
+
+(defn pascal-triangle [row]
+  (loop [row-no row acc [1]]
+  (if (= row-no 1)
+    acc
+    (recur
+      (dec row-no)
+      (pascal-triangle-next-row acc)))))
+
+(pascal-triangle 5)
 
 
 
@@ -180,3 +229,14 @@
     (reduce lcm args)))
 
 (least-common-multiple-solution 7 5/7 2 3/5)
+
+
+;; problem 107 (Easy)
+(defn simple-closures-solution
+  [n] ;; update args as needed
+  ;; Lexical scope and first-class functions are two of the most basic building blocks of a functional language like Clojure. When you combine the two together, you get something very powerful called lexical closures. With these, you can exercise a great deal of control over the lifetime of your local bindings, saving their values for use later, long after the code you're running now has finished.
+  ;;  It can be hard to follow in the abstract, so let's build a simple closure. Given a positive integer n, return a function (f x) which computes xn. Observe that the effect of this is to preserve the value of n for use outside the scope in which it is defined.
+
+  (fn [x] (reduce * (repeat n x))))
+
+

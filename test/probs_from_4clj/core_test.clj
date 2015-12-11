@@ -92,6 +92,26 @@
   (is (= 300 (count (cartesian-product-solution (into #{} (range 10))
                                                 (into #{} (range 30)))))))
 
+;; problem 97
+(deftest can-pascal-s-triangle
+  (is (= (pascal-s-triangle-solution 1) [1]))
+  (is (= (map pascal-s-triangle-solution (range 1 6))
+         [     [1]
+          [1 1]
+          [1 2 1]
+          [1 3 3 1]
+          [1 4 6 4 1]]))
+  (is (= (pascal-s-triangle-solution 11)
+         [1 10 45 120 210 252 210 120 45 10 1])))
+
+;; problem 100
+(deftest can-least-common-multiple
+  (is (== (least-common-multiple-solution 2 3) 6))
+  (is (== (least-common-multiple-solution 5 3 7) 105))
+  (is (== (least-common-multiple-solution 1/3 2/5) 2))
+  (is (== (least-common-multiple-solution 3/4 1/6) 3/2))
+  (is (== (least-common-multiple-solution 7 5/7 2 3/5) 210)))
+
 ;; problem 107
 (deftest can-simple-closures
   (is (= 256 ((simple-closures-solution 2) 16),
@@ -104,10 +124,5 @@
 
 
 
-;; problem 100
-(deftest can-least-common-multiple
-  (is (== (least-common-multiple-solution 2 3) 6))
-  (is (== (least-common-multiple-solution 5 3 7) 105))
-  (is (== (least-common-multiple-solution 1/3 2/5) 2))
-  (is (== (least-common-multiple-solution 3/4 1/6) 3/2))
-  (is (== (least-common-multiple-solution 7 5/7 2 3/5) 210)))
+
+
