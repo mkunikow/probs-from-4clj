@@ -92,6 +92,26 @@
   (is (= 300 (count (cartesian-product-solution (into #{} (range 10))
                                                 (into #{} (range 30)))))))
 
+
+;; problem 95
+(deftest can-to-tree-or-not-to-tree
+  (is (= (to-tree-or-not-to-tree-solution '(:a (:b nil nil) nil))
+         true))
+  (is (= (to-tree-or-not-to-tree-solution '(:a (:b nil nil)))
+         false))
+  (is (= (to-tree-or-not-to-tree-solution [1 nil [2 [3 nil nil] [4 nil nil]]])
+         true))
+  (is (= (to-tree-or-not-to-tree-solution [1 [2 nil nil] [3 nil nil] [4 nil nil]])
+         false))
+  (is (= (to-tree-or-not-to-tree-solution [1 [2 [3 [4 nil nil] nil] nil] nil])
+         true))
+  (is (= (to-tree-or-not-to-tree-solution [1 [2 [3 [4 false nil] nil] nil] nil])
+         false))
+  (is (= (to-tree-or-not-to-tree-solution '(:a nil ()))
+         false))
+  )
+
+
 ;; problem 97
 (deftest can-pascal-s-triangle
   (is (= (pascal-s-triangle-solution 1) [1]))
@@ -118,6 +138,8 @@
        ((simple-closures-solution 8) 2)))
   (is (= [1 8 27 64] (map (simple-closures-solution 3) [1 2 3 4])))
   (is (= [1 2 4 8 16] (map #((simple-closures-solution %) 2) [0 1 2 3 4]))))
+
+
 
 
 

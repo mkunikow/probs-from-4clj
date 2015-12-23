@@ -150,6 +150,35 @@
 (cartesian-product-solution #{1 2} #{3 4 5})
 
 
+;; problem 95 (Easy)
+(defn to-tree-or-not-to-tree-solution
+  [tree] ;; update args as needed
+  ;; Write a predicate which checks whether or not a given sequence represents a binary tree. Each node in the tree must have a value, a left child, and a right child.
+  (letfn [(is-b-tree? [tree]
+          (if (or (seq? tree) (vector? tree))
+            (if (= (count tree) 3)
+              (reduce #(and (is-b-tree? %1) (is-b-tree? %2)) tree)
+              false)
+            (not(false? tree))))
+          ]
+    (if (not (or (seq? tree) (vector? tree)))
+      false
+      (is-b-tree? tree))))
+
+
+(defn is-b-tree? [tree]
+  (if (or (seq? tree) (vector? tree))
+    (if (= (count tree) 3)
+      (reduce #(and (is-b-tree? %1) (is-b-tree? %2)) tree)
+      false)
+    true))
+
+
+(is-b-tree? [1 nil [2 [3 nil nil] [4 nil nil]]])
+(to-tree-or-not-to-tree-solution [1 [2 [3 [4 false nil] nil] nil] nil])
+(to-tree-or-not-to-tree-solution '(:a (:b nil nil) nil))
+
+
 
 ;; problem 97 (Easy)
 (defn pascal-s-triangle-solution
@@ -238,5 +267,7 @@
   ;;  It can be hard to follow in the abstract, so let's build a simple closure. Given a positive integer n, return a function (f x) which computes xn. Observe that the effect of this is to preserve the value of n for use outside the scope in which it is defined.
 
   (fn [x] (reduce * (repeat n x))))
+
+
 
 
