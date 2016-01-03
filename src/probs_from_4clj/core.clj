@@ -155,7 +155,7 @@
   [tree] ;; update args as needed
   ;; Write a predicate which checks whether or not a given sequence represents a binary tree. Each node in the tree must have a value, a left child, and a right child.
   (letfn [(is-b-tree? [tree]
-          (if (or (seq? tree) (vector? tree))
+          (if (sequential? tree)
             (if (= (count tree) 3)
               (reduce #(and (is-b-tree? %1) (is-b-tree? %2)) tree)
               false)
@@ -192,7 +192,7 @@
   (letfn [ (is-b-tree-node-val? [node] (not (or (seq? node) (vector? node))))
           (is-b-tree-valid? [tree]
             (cond
-              (not (or (seq? tree) (vector? tree))) false
+              (not (sequential?  tree)) false
               (not= (count tree) 3) false
               :else
               (let [[root _ _] tree]
