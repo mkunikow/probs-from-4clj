@@ -167,6 +167,7 @@
 
 
 (defn is-b-tree? [tree]
+  ;(println (str "tree: " tree))
   (if (or (seq? tree) (vector? tree))
     (if (= (count tree) 3)
       (reduce #(and (is-b-tree? %1) (is-b-tree? %2)) tree)
@@ -175,10 +176,59 @@
 
 
 (is-b-tree? [1 nil [2 [3 nil nil] [4 nil nil]]])
+(is-b-tree? [1 2 3])
 (to-tree-or-not-to-tree-solution [1 [2 [3 [4 false nil] nil] nil] nil])
 (to-tree-or-not-to-tree-solution '(:a (:b nil nil) nil))
 
 
+
+
+
+
+;; problem 96 (Easy)
+(defn beauty-is-symmetry-solution
+  [tree] ;; update args as needed
+  ;; Let us define a binary tree as "symmetric" if the left half of the tree is the mirror image of the right half of the tree. Write a predicate to determine whether or not a given binary tree is symmetric. (see To Tree, or not to Tree for a reminder on the tree representation we're using).
+  (letfn [ (is-b-tree-node-val? [node] (not (or (seq? node) (vector? node))))
+          (is-b-tree-valid? [tree]
+            (cond
+              (not (or (seq? tree) (vector? tree))) false
+              (not= (count tree) 3) false
+              :else
+              (let [[root _ _] tree]
+                (is-b-tree-node-val? root))
+              )
+            )
+
+          (is-b-tree-nodes-symetric? [node-left node-right]
+            ;(println (str "left" node-left " right" node-right))
+            (cond
+              (and (nil? node-left) (nil? node-right)) true
+              (or (nil? node-left) (nil? node-right)) false
+              (and (is-b-tree-node-val? node-left) (is-b-tree-node-val? node-right)) (= node-left node-right)
+              (or (is-b-tree-node-val? node-left) (is-b-tree-node-val? node-right)) false
+              :else
+              (let [[node-left-root node-left-left node-left-right] node-left
+                    [node-right-root node-right-left node-right-right] node-right ]
+                (and
+                  (is-b-tree-node-val? node-left-root)
+                  (is-b-tree-node-val? node-right-root)
+                  (= node-left-root node-right-root)
+                  (is-b-tree-nodes-symetric? node-left-left node-right-right)
+                  (is-b-tree-nodes-symetric? node-left-right node-right-left)
+
+                  ))
+              )
+            )
+
+          (is-b-tree-symetric? [tree]
+            (if (is-b-tree-valid? tree)
+              (let [[_ left right] tree]
+                (is-b-tree-nodes-symetric? left right))
+              false))
+
+          ]
+    (is-b-tree-symetric? tree)))
 
 ;; problem 97 (Easy)
 (defn pascal-s-triangle-solution
@@ -267,6 +317,8 @@
   ;;  It can be hard to follow in the abstract, so let's build a simple closure. Given a positive integer n, return a function (f x) which computes xn. Observe that the effect of this is to preserve the value of n for use outside the scope in which it is defined.
 
   (fn [x] (reduce * (repeat n x))))
+
+
 
 
 

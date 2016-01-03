@@ -112,6 +112,23 @@
   )
 
 
+;; problem 96
+(deftest can-beauty-is-symmetry
+  (is (= (beauty-is-symmetry-solution '(:a (:b nil nil) (:b nil nil))) true))
+  (is (= (beauty-is-symmetry-solution '(:a (:b nil nil) nil)) false))
+  (is (= (beauty-is-symmetry-solution '(:a (:b nil nil) (:c nil nil))) false))
+  (is (= (beauty-is-symmetry-solution [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]]
+                                       [2 [3 nil [4 [6 nil nil] [5 nil nil]]] nil]])
+         true))
+  (is (= (beauty-is-symmetry-solution [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]]
+                                       [2 [3 nil [4 [5 nil nil] [6 nil nil]]] nil]])
+         false))
+  (is (= (beauty-is-symmetry-solution [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]]
+                                       [2 [3 nil [4 [6 nil nil] nil]] nil]])
+         false))
+
+  )
+
 ;; problem 97
 (deftest can-pascal-s-triangle
   (is (= (pascal-s-triangle-solution 1) [1]))
@@ -138,6 +155,8 @@
        ((simple-closures-solution 8) 2)))
   (is (= [1 8 27 64] (map (simple-closures-solution 3) [1 2 3 4])))
   (is (= [1 2 4 8 16] (map #((simple-closures-solution %) 2) [0 1 2 3 4]))))
+
+
 
 
 
