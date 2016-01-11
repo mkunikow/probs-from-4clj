@@ -55,6 +55,13 @@
   (is (= (factorial-fun-solution 5) 120))
   (is (= (factorial-fun-solution 8) 40320)))
 
+;; problem 46
+(deftest can-flipping-out
+  (is (= 3 ((flipping-out-solution nth) 2 [1 2 3 4 5])))
+  (is (= true ((flipping-out-solution >) 7 8)))
+  (is (= 4 ((flipping-out-solution quot) 2 8)))
+  (is (= [1 2 3] ((flipping-out-solution take) [1 2 3 4 5] 3))))
+
 ;; problem 66
 (deftest can-greatest-common-divisor
   (is (= (greatest-common-divisor-solution 2 4) 2))
@@ -155,6 +162,8 @@
        ((simple-closures-solution 8) 2)))
   (is (= [1 8 27 64] (map (simple-closures-solution 3) [1 2 3 4])))
   (is (= [1 2 4 8 16] (map #((simple-closures-solution %) 2) [0 1 2 3 4]))))
+
+
 
 
 

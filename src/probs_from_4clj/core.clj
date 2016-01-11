@@ -95,6 +95,17 @@
 
 (factorial-fun-solution-rec 5)
 
+;; problem 46 (Medium)
+(defn flipping-out-solution
+  [in-fn] ;; update args as needed
+  ;; Write a higher-order function which flips the order of the arguments of an input function.
+  (fn [a b]
+    (in-fn b a)))
+
+((flipping-out-solution nth) 2 [1 2 3 4 5])
+
+
+
 ;; problem 66 (Easy)
 (defn greatest-common-divisor-solution
   [ain bin] ;; update args as needed
@@ -317,6 +328,8 @@
   ;;  It can be hard to follow in the abstract, so let's build a simple closure. Given a positive integer n, return a function (f x) which computes xn. Observe that the effect of this is to preserve the value of n for use outside the scope in which it is defined.
 
   (fn [x] (reduce * (repeat n x))))
+
+
 
 
 
