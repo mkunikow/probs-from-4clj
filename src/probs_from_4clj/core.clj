@@ -108,6 +108,11 @@
 (rem -2 5)
 (rotate-sequence-solution 6 [1 2 3 4 5])
 
+(defn my-mod [a b]
+  (if (or (< a 0 b) (< b 0 a))
+    (+ (rem a b) b)
+    (rem a b)))
+
 ;; problem 46 (Medium)
 (defn flipping-out-solution
   [in-fn] ;; update args as needed
