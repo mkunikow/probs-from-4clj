@@ -55,6 +55,14 @@
   (is (= (factorial-fun-solution 5) 120))
   (is (= (factorial-fun-solution 8) 40320)))
 
+;; problem 44
+(deftest can-rotate-sequence
+  (is (= (rotate-sequence-solution 2 [1 2 3 4 5]) '(3 4 5 1 2)))
+  (is (= (rotate-sequence-solution -2 [1 2 3 4 5]) '(4 5 1 2 3)))
+  (is (= (rotate-sequence-solution 6 [1 2 3 4 5]) '(2 3 4 5 1)))
+  (is (= (rotate-sequence-solution 1 '(:a :b :c)) '(:b :c :a)))
+  (is (= (rotate-sequence-solution -4 '(:a :b :c)) '(:c :a :b))))
+
 ;; problem 46
 (deftest can-flipping-out
   (is (= 3 ((flipping-out-solution nth) 2 [1 2 3 4 5])))
@@ -162,6 +170,8 @@
        ((simple-closures-solution 8) 2)))
   (is (= [1 8 27 64] (map (simple-closures-solution 3) [1 2 3 4])))
   (is (= [1 2 4 8 16] (map #((simple-closures-solution %) 2) [0 1 2 3 4]))))
+
+
 
 
 

@@ -95,6 +95,19 @@
 
 (factorial-fun-solution-rec 5)
 
+
+;; problem 44 (Medium)
+(defn rotate-sequence-solution
+  [in-rt-nbr in-seq] ;; update args as needed
+  ;; Write a function which can rotate a sequence in either direction.
+  (let [in-seq-size (count in-seq)
+        rt-nb-mod (mod in-rt-nbr in-seq-size)]
+    (take in-seq-size (drop rt-nb-mod (cycle in-seq)))))
+
+(mod -2 5)                                                  ;;3
+(rem -2 5)
+(rotate-sequence-solution 6 [1 2 3 4 5])
+
 ;; problem 46 (Medium)
 (defn flipping-out-solution
   [in-fn] ;; update args as needed
@@ -328,6 +341,8 @@
   ;;  It can be hard to follow in the abstract, so let's build a simple closure. Given a positive integer n, return a function (f x) which computes xn. Observe that the effect of this is to preserve the value of n for use outside the scope in which it is defined.
 
   (fn [x] (reduce * (repeat n x))))
+
+
 
 
 
