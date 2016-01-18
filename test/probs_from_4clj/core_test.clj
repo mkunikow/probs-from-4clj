@@ -55,6 +55,12 @@
   (is (= (factorial-fun-solution 5) 120))
   (is (= (factorial-fun-solution 8) 40320)))
 
+;; problem 43
+(deftest can-reverse-interleave
+  (is (= (reverse-interleave-solution [1 2 3 4 5 6] 2) '((1 3 5) (2 4 6))))
+  (is (= (reverse-interleave-solution (range 9) 3) '((0 3 6) (1 4 7) (2 5 8))))
+  (is (= (reverse-interleave-solution (range 10) 5) '((0 5) (1 6) (2 7) (3 8) (4 9)))))
+
 ;; problem 44
 (deftest can-rotate-sequence
   (is (= (rotate-sequence-solution 2 [1 2 3 4 5]) '(3 4 5 1 2)))
@@ -170,6 +176,8 @@
        ((simple-closures-solution 8) 2)))
   (is (= [1 8 27 64] (map (simple-closures-solution 3) [1 2 3 4])))
   (is (= [1 2 4 8 16] (map #((simple-closures-solution %) 2) [0 1 2 3 4]))))
+
+
 
 
 

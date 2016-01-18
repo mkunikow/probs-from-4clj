@@ -96,6 +96,19 @@
 (factorial-fun-solution-rec 5)
 
 
+;; problem 43 (Medium)
+(defn reverse-interleave-solution
+  [in-seq in-size] ;; update args as needed
+  ;; Write a function which reverses the interleave process into x number of subsequences.
+    (->> in-seq
+        (partition in-size)
+        (apply map list)))
+
+(map list '(1 2) '(3 4) '(5 6))
+(partition 3 [1 2 3 4 5 6])
+(reverse-interleave-solution [1 2 3 4 5 6] 2)
+
+
 ;; problem 44 (Medium)
 (defn rotate-sequence-solution
   [in-rt-nbr in-seq] ;; update args as needed
@@ -346,6 +359,8 @@
   ;;  It can be hard to follow in the abstract, so let's build a simple closure. Given a positive integer n, return a function (f x) which computes xn. Observe that the effect of this is to preserve the value of n for use outside the scope in which it is defined.
 
   (fn [x] (reduce * (repeat n x))))
+
+
 
 
 
