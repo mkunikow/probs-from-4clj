@@ -136,6 +136,16 @@
 ((flipping-out-solution nth) 2 [1 2 3 4 5])
 
 
+;; problem 50 (Medium)
+(defn split-by-type-solution
+  [in-col] ;; update args as needed
+  ;; Write a function which takes a sequence consisting of items with different types and splits them up into a set of homogeneous sub-sequences. The internal order of each sub-sequence should be maintained, but the sub-sequences themselves can be returned in any order (this is why 'set' is used in the test cases).
+  (vals (group-by type in-col)))
+
+( vals (group-by type [1 :a 2 :b 3 :c]))
+(split-by-type-solution [1 :a 2 :b 3 :c])
+
+
 
 ;; problem 66 (Easy)
 (defn greatest-common-divisor-solution
@@ -359,6 +369,8 @@
   ;;  It can be hard to follow in the abstract, so let's build a simple closure. Given a positive integer n, return a function (f x) which computes xn. Observe that the effect of this is to preserve the value of n for use outside the scope in which it is defined.
 
   (fn [x] (reduce * (repeat n x))))
+
+
 
 
 

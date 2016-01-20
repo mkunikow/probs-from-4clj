@@ -76,6 +76,12 @@
   (is (= 4 ((flipping-out-solution quot) 2 8)))
   (is (= [1 2 3] ((flipping-out-solution take) [1 2 3 4 5] 3))))
 
+;; problem 50
+(deftest can-split-by-type
+  (is (= (set (split-by-type-solution [1 :a 2 :b 3 :c])) #{[1 2 3] [:a :b :c]}))
+  (is (= (set (split-by-type-solution [:a "foo"  "bar" :b])) #{[:a :b] ["foo" "bar"]}))
+  (is (= (set (split-by-type-solution [[1 2] :a [3 4] 5 6 :b])) #{[[1 2] [3 4]] [:a :b] [5 6]})))
+
 ;; problem 66
 (deftest can-greatest-common-divisor
   (is (= (greatest-common-divisor-solution 2 4) 2))
@@ -176,6 +182,8 @@
        ((simple-closures-solution 8) 2)))
   (is (= [1 8 27 64] (map (simple-closures-solution 3) [1 2 3 4])))
   (is (= [1 2 4 8 16] (map #((simple-closures-solution %) 2) [0 1 2 3 4]))))
+
+
 
 
 
